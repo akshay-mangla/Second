@@ -1,17 +1,5 @@
 {
   "Parameters": {
-    "DeployEnvironment": "dev",
-    "CloudFrontRequireAuth": "true",
-    "EmptyWebBucketOnDelete": "true",
-    "AppName": "mdit-mynews3-bucket",
-    "CostCenter": "YOUR_COST_CENTER",
-    "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
-    "SystemOwner": "YOUR_SYSTEM_OWNER",
-    "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
-    "PrimaryItContact": "YOUR_PRIMARY_IT_CONTACT",
-    "Level1BusinessArea": "YOUR_LEVEL1_BUSINESS_AREA",
-    "DataClassification": "Green",
-    "Hipaa": "Yes"
   },
   "Tags": {
     "CostCenter": "YOUR_COST_CENTER",
