@@ -3,16 +3,16 @@ Description: Template to Create an SNS Topic and Subscriptions
 
 Resources:
 
- MySNSTopic: 
+  MySNSTopic: 
    Type: AWS::SNS::Topic
    Properties: 
      Subscription: 
        - Endpoint: "mangla_akshay@lilly.com"
          Protocol: "email"
      TopicName: 'cool-topic'
- mysnspolicy:
- Type: AWS::SNS::TopicPolicy
- Properties:
+  mysnspolicy:
+   Type: AWS::SNS::TopicPolicy
+   Properties:
     PolicyDocument:
       Id: MyTopicPolicy
       Version: '2012-10-17'
@@ -27,7 +27,7 @@ Resources:
     Topics:
     - !Ref MySNSTopic
     
- MyEventNotification:
+  MyEventNotification:
    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
       Name: 'My Notification Rule'
