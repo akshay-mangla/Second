@@ -1,13 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Template to Create an SNS Topic and Subscriptions
 
-Parameters:
-
-  TopicName:
-    Type: String
-    Description:  Topic Name
-    Default: my-topic
-
 Resources:
 
  MySNSTopic: 
@@ -16,7 +9,7 @@ Resources:
      Subscription: 
        - Endpoint: "mangla_akshay@lilly.com"
          Protocol: "email"
-     TopicName: !Ref TopicName 
+     TopicName: 'cool-topic'
  mysnspolicy:
  Type: AWS::SNS::TopicPolicy
  Properties:
@@ -39,7 +32,7 @@ Resources:
    Properties:
       Name: 'My Notification Rule'
       DetailType: FULL
-      Resource: 'arn:aws:codepipeline:us-east-1:138453658002:mdit-ppm-dsp-dev'
+      Resource: 'arn:aws:codepipeline:us-east-1:073395114856:role'
       EventTypeIds: 
           - codepipeline-pipeline-pipeline-execution-failed
           - codepipeline-pipeline-pipeline-execution-succeeded
