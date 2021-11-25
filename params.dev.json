@@ -1,0 +1,27 @@
+{
+  "Parameters": {
+    "DeployEnvironment": "dev",
+    "CloudFrontRequireAuth": "true",
+    "EmptyWebBucketOnDelete": "true",
+    "AppName": "{{ cookiecutter.project_slug }}",
+    "CostCenter": "{{ cookiecutter.cost_center }}",
+    "CostCenterApprover": "{{ cookiecutter.cost_center_approver }}",
+    "SystemOwner": "{{ cookiecutter.system_owner }}",
+    "SystemCustodian": "{{ cookiecutter.system_custodian }}",
+    "PrimaryItContact": "{{ cookiecutter.primary_it_contact }}",
+    "Level1BusinessArea": "{{ cookiecutter.level1_business_area }}",
+    "DataClassification": "{{ cookiecutter.data_classification }}",
+    "Hipaa": "{{ cookiecutter.hipaa }}"
+  },
+  "Tags": {
+    "CostCenter": "{{ cookiecutter.cost_center }}",
+    "CostCenterApprover": "{{ cookiecutter.cost_center_approver }}",
+    "SystemOwner": "{{ cookiecutter.system_owner }}",
+    "SystemCustodian": "{{ cookiecutter.system_custodian }}",
+    "PrimaryItContact": "{{ cookiecutter.primary_it_contact }}",
+    "Level1BusinessArea": "{{ cookiecutter.level1_business_area }}",
+    "DataClassification": "{{ cookiecutter.data_classification }}",
+    "Hipaa": "{{ cookiecutter.hipaa }}"
+  },
+  "StackPolicy": {}
+}

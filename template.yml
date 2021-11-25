@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template to Create an SNS Topic and Subscriptions
+
+Parameters:
+
+  TopicName:
+    Type: String
+    Description:  Topic Name
+    Default: my-topic
+
+Resources:
+
+ MySNSTopic: 
+   Type: AWS::SNS::Topic
+   Properties: 
+     Subscription: 
+       - Endpoint: "mangla_akshay@lilly.com"
+         Protocol: "email"
+     TopicName: !Ref TopicName 
+ mysnspolicy:
+ Type: AWS::SNS::TopicPolicy
+ Properties:
+    PolicyDocument:
+      Id: MyTopicPolicy
+      Version: '2012-10-17'
+      Statement:
+      - Sid: CodeNotification_publish
+        Effect: Allow
+        Principal:
+          Service: 
+            - codestar-notifications.amazonaws.com
+        Action: sns:Publish
+        Resource: !Ref MySNSTopic
+    Topics:
+    - !Ref MySNSTopic
+    
+ MyEventNotification:
+   Type: AWS::CodeStarNotifications::NotificationRule
+   Properties:
+      Name: 'My Notification Rule'
+      DetailType: FULL
+      Resource: 'arn:aws:codepipeline:us-east-1:138453658002:mdit-ppm-dsp-dev'
+      EventTypeIds: 
+          - codepipeline-pipeline-pipeline-execution-failed
+          - codepipeline-pipeline-pipeline-execution-succeeded
+      Targets: 
+          - TargetType: SNS 
+            TargetAddress: !Ref MySNSTopic
