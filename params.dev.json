@@ -3,25 +3,25 @@
     "DeployEnvironment": "dev",
     "CloudFrontRequireAuth": "true",
     "EmptyWebBucketOnDelete": "true",
-    "AppName": "{{ cookiecutter.project_slug }}",
-    "CostCenter": "{{ cookiecutter.cost_center }}",
-    "CostCenterApprover": "{{ cookiecutter.cost_center_approver }}",
-    "SystemOwner": "{{ cookiecutter.system_owner }}",
-    "SystemCustodian": "{{ cookiecutter.system_custodian }}",
-    "PrimaryItContact": "{{ cookiecutter.primary_it_contact }}",
-    "Level1BusinessArea": "{{ cookiecutter.level1_business_area }}",
-    "DataClassification": "{{ cookiecutter.data_classification }}",
-    "Hipaa": "{{ cookiecutter.hipaa }}"
+    "AppName": "mdit-mynews3-bucket",
+    "CostCenter": "YOUR_COST_CENTER",
+    "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
+    "SystemOwner": "YOUR_SYSTEM_OWNER",
+    "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
+    "PrimaryItContact": "YOUR_PRIMARY_IT_CONTACT",
+    "Level1BusinessArea": "YOUR_LEVEL1_BUSINESS_AREA",
+    "DataClassification": "Green",
+    "Hipaa": "Yes"
   },
   "Tags": {
-    "CostCenter": "{{ cookiecutter.cost_center }}",
-    "CostCenterApprover": "{{ cookiecutter.cost_center_approver }}",
-    "SystemOwner": "{{ cookiecutter.system_owner }}",
-    "SystemCustodian": "{{ cookiecutter.system_custodian }}",
-    "PrimaryItContact": "{{ cookiecutter.primary_it_contact }}",
-    "Level1BusinessArea": "{{ cookiecutter.level1_business_area }}",
-    "DataClassification": "{{ cookiecutter.data_classification }}",
-    "Hipaa": "{{ cookiecutter.hipaa }}"
+    "CostCenter": "YOUR_COST_CENTER",
+    "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
+    "SystemOwner": "YOUR_SYSTEM_OWNER",
+    "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
+    "PrimaryItContact": "YOUR_PRIMARY_IT_CONTACT",
+    "Level1BusinessArea": "YOUR_LEVEL1_BUSINESS_AREA",
+    "DataClassification": "Green",
+    "Hipaa": "Yes"
   },
   "StackPolicy": {}
 }
