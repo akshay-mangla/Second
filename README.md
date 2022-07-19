@@ -1,4 +1,4 @@
-# {{ cookiecutter.project_name }}
+# Test Repo
 
 
 ## Getting Started
