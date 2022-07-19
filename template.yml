@@ -40,7 +40,7 @@ Parameters:
   SystemOwner:
     Type: String
     Default: "YOUR_SYSTEM_OWNER"
-SystemCustodian:
+  SystemCustodian:
     Type: String
     Default: "YOUR_SYSTEM_CUSTODIAN"
   PrimaryItContact:
