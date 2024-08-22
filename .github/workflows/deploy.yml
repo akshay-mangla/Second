@@ -1,0 +1,75 @@
+# Prerequisites:
+#   - Create a Service Principal:
+#     - Submit RITM to Azure AD Team: https://lilly.service-now.com/ess/view_content_search.do?v=1&uri=com.glideapp.servicecatalog_cat_item_view.do%3Fv%3D1%26sysparm_id%3D4a263bfc1b2cb458e5388511604bcb66%26sysparm_link_parent%3D47932b7135e7340014379b119de070df%26sysparm_catalog%3De0d08b13c3330100c8b837659bba8fb4&sysparm_document_key=sc_cat_item,4a263bfc1b2cb458e5388511604bcb66
+#         Request Type: Create
+#         Creation Request: Create New Service Principal
+#         Specify the service principal name: <Subscription Name>-sp
+#   - Assign the service principal the "Custom Role - LLY Subscription SP" role at the subscription level
+#   - Create a secret in GitHub called AZURE_SUBSCRIPTION_ID and set it to the subscription ID
+#   - Create a secret in GitHub called AZURE_TENANT_ID and set it to the tenant ID
+#   - Create a secret in GitHub called AZURE_CLIENT_ID and set it to the client ID of the service principal
+#   - Configure the service principal for OIDC authentication by following the instructions here: https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Cwindows#add-federated-credentials
+#   - Grant the service principal the "AcrPull" role at the scope of the prodgishcsbicep container registry: https://portal.azure.com/#@elililly.onmicrosoft.com/resource/subscriptions/b4e981a6-6232-45da-93f2-28d02921a70c/resourceGroups/prod-acr-rg/providers/Microsoft.ContainerRegistry/registries/prodgishcsbicep/users
+name: Module Deployment backup
+
+on:
+  workflow_dispatch:
+    inputs:
+      modulename:
+        description: "Name of the Module Being Deployed"
+        required: true
+        type: choice
+        options:
+          - src/App.css
+          - src/App.js
+      moduleparameterfilename:
+        description: "Name of the Module File"
+        required: true
+        type: string
+      resourcegroupname:
+        description: "Name of Resource Group where module is being Deployed"
+        required: true
+        type: string
+      location:
+        description: "ResourceGroup Location"
+        required: true
+        type: choice
+        options:
+          - centralus
+      environment:
+        description: "Select the environment to use"
+        required: true
+        type: environment
+        default: "dev"
+
+env:
+  ResourceGroupLocation: 'centralus'
+  ResourceGroupName: ${{ github.event.inputs.resourcegroupname }}
+  ResourceGroupModulePath: "modules/bicep/resources/resource-groups/main.bicep"
+  ModulePath: "modules/bicep/${{ github.event.inputs.modulename }}/main.bicep"
+  ModuleName: ${{ github.event.inputs.modulename }}
+  ModuleParaFileName: ${{ github.event.inputs.moduleparameterfilename }}
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  cloudformation-deploy:
+    name: Deploy CloudFormation
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: cfn-lint-action
+        uses: ScottBrenner/cfn-lint-action@v2.2.9
+
+      - name: Print the cloud formation linter version & run linter
+        run: |
+          cfn-lint --version
+          cfn-lint --ignore-check W3011,W3002 -t ./template.yml
