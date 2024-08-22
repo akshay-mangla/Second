@@ -43,10 +43,10 @@ on:
         default: "dev"
 
 env:
-  ResourceGroupLocation: 'centralus'
-  ResourceGroupName: ${{ github.event.inputs.resourcegroupname }}
-  ResourceGroupModulePath: "modules/bicep/resources/resource-groups/main.bicep"
-  ModulePath: "modules/bicep/${{ github.event.inputs.modulename }}/main.bicep"
+  # ResourceGroupLocation: 'centralus'
+  # ResourceGroupName: ${{ github.event.inputs.resourcegroupname }}
+  # ResourceGroupModulePath: "modules/bicep/resources/resource-groups/main.bicep"
+  # ModulePath: "modules/bicep/${{ github.event.inputs.modulename }}/main.bicep"
   ModuleName: ${{ github.event.inputs.modulename }}
   ModuleParaFileName: ${{ github.event.inputs.moduleparameterfilename }}
 
